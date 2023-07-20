@@ -1,10 +1,12 @@
 package core.utility;
 
-public class SquareBoundary implements Boundary {
+import core.utility.coordinates.Coordinate;
+
+public class SquareArea implements Area {
 	
 	private Coordinate corners[];
 	
-	public SquareBoundary(Coordinate corners[]) {
+	public SquareArea(Coordinate corners[]) {
 		this.corners = corners; //TODO: organize this is some way
 	}
 	
@@ -12,7 +14,7 @@ public class SquareBoundary implements Boundary {
 		return corners;
 	}
 	
-	public boolean withinBoundary(Coordinate coordinate) {
+	public boolean withinBoundary(Coordinate coordinateLLA) {
 		return true;
 	}
 	

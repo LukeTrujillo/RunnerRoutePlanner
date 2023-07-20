@@ -1,12 +1,14 @@
 package core.routes.planners;
 
-import core.world.World;
+import core.route.Route;
+import runbetter.core.geograph.GeoGraph;
 
 public class DFSRoutePlanner extends RoutePlanner {
 
-	public DFSRoutePlanner(World world) {
-		super(world);
-		// TODO Auto-generated constructor stub
+	@Override
+	public Route plan(GeoGraph geoGraph) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

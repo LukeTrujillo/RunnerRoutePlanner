@@ -2,20 +2,20 @@ package core.route;
 
 import java.util.ArrayList;
 
-import core.world.pathway.PathwayNode;
+import runbetter.core.geograph.GeoNode;
 
 public class Route {
-	private ArrayList<PathwayNode> nodes;
+	private ArrayList<GeoNode> geoNodes;
 
 	public Route() {
-		this.nodes = new ArrayList<PathwayNode>();
+		this.nodes = new ArrayList<GeoNode>();
 	}
 
 	public boolean isLoop() {
 		return this.nodes.size() > 0 && this.nodes.get(0).equals(this.nodes.get(this.nodes.size() - 1));
 	}
 
-	public void addPathwayNode(PathwayNode node) {
-		this.nodes.add(node);
+	public void addPathwayNode(GeoNode geoNode) {
+		this.nodes.add(geoNode);
 	}
 }

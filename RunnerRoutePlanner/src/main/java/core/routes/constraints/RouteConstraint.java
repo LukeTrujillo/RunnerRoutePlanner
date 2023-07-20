@@ -1,5 +1,7 @@
 package core.routes.constraints;
 
-public abstract class RouteConstraint {
+import core.route.Route;
 
+public interface RouteConstraint {
+	public double getRouteScore(Route route);
 }

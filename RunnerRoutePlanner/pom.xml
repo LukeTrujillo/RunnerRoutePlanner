@@ -17,6 +17,15 @@
 		<version>5.5.2</version>
 		<scope>test</scope>
 	</dependency>
+	<dependency>
+    <groupId>com.graphhopper</groupId>
+	    <artifactId>graphhopper-core</artifactId>
+	    <version>0.8.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.javatuples</groupId>
+	    <artifactId>javatuples</artifactId>
+	    <version>1.2</version>
+	</dependency>
   </dependencies>
-  
 </project>
