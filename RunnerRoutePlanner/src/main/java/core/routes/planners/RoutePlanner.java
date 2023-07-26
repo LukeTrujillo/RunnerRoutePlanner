@@ -1,24 +1,51 @@
 package core.routes.planners;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import org.javatuples.Pair;
-
-import core.route.Route;
+import core.geograph.GeoGraph;
+import core.geograph.GeoNode;
+import core.routes.Route;
 import core.routes.constraints.RouteConstraint;
-import runbetter.core.geograph.GeoGraph;
+import core.routes.criterias.RouteCriteria;
+import core.routes.planners.constraints.PlannerConstraint;
 
 public abstract class RoutePlanner {
-	private List<Pair<Double, RouteConstraint>> weightedConstraints; 
+
+	protected ArrayList<PlannerConstraint> plannerConstraints;
+	protected ArrayList<RouteConstraint> routeConstraints; 
+	protected ArrayList<RouteCriteria> routeCriteria;
+	
+	protected Route route;
 	
 	public RoutePlanner() {
-		this.weightedConstraints = new ArrayList<Pair<Double, RouteConstraint>>();
+		this.plannerConstraints = new ArrayList<PlannerConstraint>();
+		this.routeConstraints = new ArrayList<RouteConstraint>();
+		this.routeCriteria = new ArrayList<RouteCriteria>();
+		this.route = new Route();
+	}
+
+	public Route run(GeoGraph graph) throws RoutePlannerException {
+		if(this.routeConstraints.size() == 0) {
+			throw new RoutePlannerException("No route criteria given.");
+		}
+		return this.plan(graph);
+	}
+
+	public void addRouteConstraint(RouteConstraint routeConstraint) {
+		this.routeConstraints.add(routeConstraint);
 	}
 	
-	public void addConstraint(double weight, RouteConstraint constraint) {
-		
+	public void addPlannerConstraint(PlannerConstraint plannerConstraint) {
+		this.plannerConstraints.add(plannerConstraint);
 	}
 	
-	public abstract Route plan(GeoGraph geoGraph);
+	public void addRouteCriteria(RouteCriteria criteria) {
+		this.routeCriteria.add(criteria);
+	}
+	
+	public void setStartNode(GeoNode node) {
+		this.route.set(0, node);
+	}
+	
+	protected abstract Route plan(GeoGraph graph) throws RoutePlannerException;
 }
